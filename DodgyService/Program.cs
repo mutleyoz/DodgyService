@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DodgyService
 {
@@ -6,7 +7,14 @@ namespace DodgyService
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CreateWebHostBuilder(args).Build().Run();
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .CaptureStartupErrors(true)
+                .UseKestrel()
+                .UseStartup<StartUp>();
+
     }
 }
