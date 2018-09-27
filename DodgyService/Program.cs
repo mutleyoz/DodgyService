@@ -14,7 +14,8 @@ namespace DodgyService
             WebHost.CreateDefaultBuilder(args)
                 .CaptureStartupErrors(true)
                 .UseKestrel()
-                .UseStartup<StartUp>();
+                .UseStartup<StartUp>()
+                .UseUrls("http://localhost:8000");
 
     }
 }
